@@ -1,0 +1,15 @@
+width, height = 110, 110
+a, b = 50, 50
+r = 50
+EPSILON = 2.2
+def crug(width, height, a, b, r):
+    map_= [[' ' for x in range(width+ 1200)]for y in range(height-10)]
+
+    for y in range(height-10):
+        for x in range(width + 1200):
+            if (x-a)**2 + (y-b)**2 <= (r**2 - 2.2**2):
+                map_[y][x] = "#"
+    for line in map_:
+        print(' '.join(line))
+
+crug(width, height, a, b, r)
