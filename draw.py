@@ -1,31 +1,3 @@
-from colorama import Fore
-#import OutColor
-
-
-def DrawFillRec(a, b, save, color='W'):
-    if save == 1:
-        fout = open('result_operation_file.it', 'w')
-    c = [[a[2] for j in range(int(a[0]))] for i in range(int(a[1]))]
-    for i in range(int(b[2]), int(b[4]) + 1):
-        for j in range(int(b[1]), int(b[3]) + 1):
-            c[i][j] = b[5]
-    for i in range(len(c)):
-        for j in range(len(c[i])):
-            if c[i][j] == b[5]:
-                print(c[i][j], end=' ')
-                if save == 1:
-                    fout.write(c[i][j] + ' ')
-            else:
-                print(c[i][j], end=' ')
-                if save == 1:
-                    fout.write(c[i][j] + ' ')
-        print()
-        if save == 1:
-            fout.write('\n')
-    if save == 1:
-        fout.close()
-
-
 def ft_split(stroka, s):
     stroka += s
     arg = ''
@@ -117,71 +89,27 @@ def draw_line(w_f, h_f, x1, y1, x2, y2, char, char_f): # Алгоритм Бре
         map_[x][y] = char
     return map_
 
-def draw_line1(map_, x1, y1, x2, y2, char):
-    dx = x2 - x1
-    dy = y2 - y1
-    sign_x = 1 if dx>0 else -1 if dx<0 else 0
-    sign_y = 1 if dy>0 else -1 if dy<0 else 0
-    if dx < 0:
-        dx = -dx
-    if dy < 0:
-        dy = -dy
-    if dx > dy:
-        pdx, pdy = sign_x, 0
-        es, el = dy, dx
-    else:
-        pdx, pdy = 0, sign_y
-        es, el = dx, dy
-    x, y = x1, y1
-    error, t = el/2, 0
-    map_[x][y] = char
-    while t < el:
-        error -= es
-        if error < 0:
-            error += el
-            x += sign_x
-            y += sign_y
-        else:
-            x += pdx
-            y += pdy
-        t += 1
-        map_[x][y] = char
-    return map_
+def draw_rec_nf(w_f, h_f, x, y, w, h, char, char_f):
+    mas = [[char_f for x in range(w_f)]for y in range(h_f)]
+    for y1 in range(h + y):
+        for x1 in range(w + x):
+            if (x1 >= x and y1 == y) or (x1 == x and y1 >= y) or (x1 == x + w - 1 and y1 >= y) or\
+                    (x1 >= x and y1 == y + h - 1):
+                mas[y1][x1] = char
+    return mas
 
-def pram_nezakr(w_f, h_f, x1, y1, w, h, char, char_f):
-    map_= [[char_f for x in range(w_f)]for y in range(w_f)]
-    map_ = draw_line1(map_, x1, y1, y1, h, char)
-    sp1 = draw_line1(map_, x1, y1, y1, h, char)
-    return sp1
+def draw_rec_f(w_f, h_f, x, y, w, h, char, char_f):
+    mas = [[char_f for x in range(w_f)]for y in range(h_f)]
+    for y1 in range(h + y):
+        for x1 in range(w + x):
+            if h + y >= y1 >= y and w + x >= x1 >= x:
+                mas[y1][x1] = char
+    return mas
 
 
-def pram_nezakr(a, b, s):
-    sp = []
-    sp.append(list(s) * a)
-    for i in range(b - 2):
-        sp1 = []
-        sp1.append(s)
-        for i in range(a - 2):
-            sp1.append(' ')
-        sp1.append(s)
-        sp.append(sp1)
-    sp.append(list(s) * a)
-    return sp
-
-
-def draw_param(w_f, h_f, x, y, h, w, char, char_f):
-    map_= [[char_f for x in range(w_f)]for y in range(w_f)]
-    sp_p = pram_nezakr(w, h, char)
-    for j in range(y, h):
-        for i in range(x, w):
-            try:
-                if sp_p[i][j] != ' ':
-                    map_[i][j] = sp_p[i][j]
-            except:
-                pass
-    return map_
-
-
+#xx = square_full(10, 10,1, 3, 4, 5, '*', '&')
+#for x in range(len(xx)):
+#    print(*xx[x])
 #DrawFillRec([10, 5, '*'], 5, 1, color='W')
 #sp = draw_param(10, 7, 1, 1, 5, 5, '$', '*')
 #for i in sp:

@@ -73,7 +73,12 @@ def error_check(sp):
         return 'Error: data file'
     if sp2[0] == 'L' and ft_len(sp2) != 6:
         return 'Error: data file'
+    elif ft_len(sp2) == 6 and sp2[0] == 'R':
+        return sp
+    elif ft_len(sp2) == 6 and sp2[0] == 'r':
+        return sp
     elif ft_len(sp2) != 5 and sp2[0] != 'L':
+        #print(sp2)
         return 'Error: data file'
     return sp
 
@@ -109,27 +114,42 @@ def main():
             sp = error_check(file_read(Er))
             if type(sp) == list:
                 if sp[1][0] == 'C':
-                    sp1=[]
+                    sp1 = []
                     for i in sp:
                         sp1.append(ft_split(i))
                     for i in crug(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), sp1[1][4], sp1[0][2]):
                         print(*i)
                 elif sp[1][0] == 'L':
-                    sp1=[]
+                    sp1 = []
                     for i in sp:
                         sp1.append(ft_split(i))
-                    m=draw_line(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(
-                        sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
+                    m = draw_line(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
                     for i in m:
                         print(*i)
                 elif sp[1][0] == 'c':
-                    sp1=[]
+                    sp1 = []
                     for i in sp:
                         sp1.append(ft_split(i))
-                    m=draw_circle(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(
-                        sp1[1][2]), int(sp1[1][3]), sp1[1][4], sp1[0][2])
+                    m = draw_circle(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), sp1[1][4], sp1[0][2])
                     for i in m:
                         print(*i)
+                elif sp[1][0] == 'r':
+                    sp1 = []
+                    for i in sp:
+                        sp1.append(ft_split(i))
+                    m = draw_rec_nf(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
+                    for i in m:
+                        print(*i)
+                elif sp[1][0] == 'R':
+                    sp1 = []
+                    for i in sp:
+                        sp1.append(ft_split(i))
+                    print(sp1)
+                    m = draw_rec_nf(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
+                    for i in m:
+                        print(*i)
+            else:
+                print(sp)
 
 
 def widht_height_background_char(w, h, char):
