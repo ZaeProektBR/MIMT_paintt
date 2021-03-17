@@ -15,3 +15,20 @@ def ft_join(lst, n=' '):
             x += n
         i += 1
     return x
+
+
+def ft_split(stroka, s):
+    stroka += s
+    arg = ''
+    spisok = []
+    for i in stroka:
+        if i != s:
+            arg += i
+        else:
+            if arg != '':
+                spisok.append(arg)
+                arg = ''
+    return spisok
+
+
+print(ft_split('C:/Users/zuiko/OneDrive/Desktop/mini_paint/MIMT_paintt/2_5355301061030579284.pdf'))
