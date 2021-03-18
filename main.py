@@ -78,7 +78,6 @@ def error_check(sp):
     elif ft_len(sp2) == 6 and sp2[0] == 'r':
         return sp
     elif ft_len(sp2) != 5 and sp2[0] != 'L':
-        #print(sp2)
         return 'Error: data file'
     return sp
 
@@ -112,6 +111,7 @@ def main():
             print('Error: Operation file corrupted')
         else:
             sp = error_check(file_read(Er))
+            print(sp)
             if type(sp) == list:
                 if sp[1][0] == 'C':
                     sp1 = []
@@ -144,8 +144,8 @@ def main():
                     sp1 = []
                     for i in sp:
                         sp1.append(ft_split(i))
-                    print(sp1)
-                    m = draw_rec_nf(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
+                    #print(sp1)
+                    m = draw_rec_f(int(sp1[0][0]), int(sp1[0][1]), int(sp1[1][1]), int(sp1[1][2]), int(sp1[1][3]), int(sp1[1][4]), sp1[1][5], sp1[0][2])
                     for i in m:
                         print(*i)
             else:

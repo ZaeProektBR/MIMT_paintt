@@ -93,10 +93,12 @@ def draw_rec_nf(w_f, h_f, x, y, w, h, char, char_f):
     mas = [[char_f for x in range(w_f)]for y in range(h_f)]
     for y1 in range(h + y):
         for x1 in range(w + x):
-            if (x1 >= x and y1 == y) or (x1 == x and y1 >= y) or (x1 == x + w - 1 and y1 >= y) or\
-                    (x1 >= x and y1 == y + h - 1):
+            if (x1 >= x and y1 == y) or (x1 == x and y1 >= y) or (x1 == x + w - 1 and y1 >= y) or (x1 >= x and y1 == y + h - 1):
                 mas[y1][x1] = char
     return mas
+
+
+
 
 def draw_rec_f(w_f, h_f, x, y, w, h, char, char_f):
     mas = [[char_f for x in range(w_f)]for y in range(h_f)]
@@ -105,38 +107,3 @@ def draw_rec_f(w_f, h_f, x, y, w, h, char, char_f):
             if h + y >= y1 >= y and w + x >= x1 >= x:
                 mas[y1][x1] = char
     return mas
-
-
-#xx = square_full(10, 10,1, 3, 4, 5, '*', '&')
-#for x in range(len(xx)):
-#    print(*xx[x])
-#DrawFillRec([10, 5, '*'], 5, 1, color='W')
-#sp = draw_param(10, 7, 1, 1, 5, 5, '$', '*')
-#for i in sp:
-#    print(*i)
-#sp1 = draw_line(5, 7, 8, 12, '#')
-#for i in sp1:
-#    print(*i)
-#sp1 = draw_circle(20, 20, 7, 7, 5, '*', '#')
-#for i in sp1:
-#    print(*i)
-
-#sp1 = crug(50, 50, 20, 20, 5, '%','j')
-#for i in sp1:
-#    print(*i)
-#sp2 = pram_nezakr(10, 10, 2, 1, 5, 7, '#', '%')
-#for i in sp2:
-#    print(*i)
-#hight = int(input())
-#wight = int(input())
-#char = input()
-#for i in range(hight):
-#    if i == 0 or i == hight - 1:
-#        for j in range(wight):
-#            print(char, end='')
-#    else:
-#        print(char, end='')
-#        for j in range(1, wight - 1):
-#            print(' ', end='')
-#        print(char, end='')
-#    print()
